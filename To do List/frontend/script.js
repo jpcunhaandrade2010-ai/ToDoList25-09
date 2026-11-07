@@ -1,5 +1,39 @@
 const tasks = [];
 
+const USERNAME = "admin";
+const PASSWORD = "1234";
+
+const loginForm = document.getElementById("loginForm");
+const loginScreen = document.getElementById("loginScreen");
+const loginMessage = document.getElementById("loginMessage");
+const app = document.getElementById("app");
+
+loginForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    if (username === USERNAME && password === PASSWORD) {
+        loginScreen.hidden = true;
+        app.hidden = false;
+    } else {
+        loginMessage.textContent = "Usuário ou senha incorretos!";
+    }
+});
+
+document.getElementById("logoutButton").addEventListener("click", function() {
+    app.hidden = true;
+    loginScreen.hidden = false;
+    loginForm.reset();
+    loginMessage.textContent = "";
+});
+
+document.getElementById("taskForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    addTask();
+});
+
 function addTask() {
     const input = document.getElementById("taskInput");
     const task = input.value.trim();
@@ -11,6 +45,7 @@ function addTask() {
 
     tasks.push(task);
     input.value = "";
+
     renderTasks();
 }
 
@@ -18,32 +53,38 @@ function renderTasks() {
     const list = document.getElementById("taskList");
     list.innerHTML = "";
 
-task.forEach((tarefa, index) => {
-    const li = document.createElement("li");
-    li. textContent = tarefa + " ";
+    tasks.forEach((tarefa, index) => {
+        const li = document.createElement("li");
 
-    const botaoExcluir = document.createElement("button");
-    botaoExcluir.textContent + "Excluir";
+        const texto = document.createElement("span");
+        texto.textContent = tarefa;
 
-    botaoExcluir.addEventListener("click", function() {
-        removerTarefa(index);
+        const botaoExcluir = document.createElement("button");
+        botaoExcluir.textContent = "Excluir";
+        botaoExcluir.classList.add("delete-button");
+
+        botaoExcluir.addEventListener("click", function() {
+            removerTarefa(index);
+        });
+
+        li.appendChild(texto);
+        li.appendChild(botaoExcluir);
+
+        list.appendChild(li);
     });
-
-    li.appendChild(botaoExcluir);
-    list.appendchild(li);
-});
 }
 
 function removerTarefa(index) {
     const confirmar = confirm(
-        "tem ceretza de que deseja excluir esta tarefa?"
+        "Tem certeza de que deseja excluir esta tarefa?"
     );
 
-if (confirmar) {
-    tasks.splice(index, 1);
-    renderTasks();
-    alert("Tarefa removida com sucesso!");
-}
+    if (confirmar) {
+        tasks.splice(index, 1);
+        renderTasks();
+
+        alert("Tarefa removida com sucesso!");
+    }
 }
 
 renderTasks();
