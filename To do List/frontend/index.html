@@ -7,11 +7,52 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="app">
-        <input type="text" id="taskInput" placeholder="Digite sua tarefa.....">
-        <button onclick="addTask()">Adicionar Tarefa</button>
+
+    <div id="loginScreen">
+        <h1>Bem-vindo</h1>
+        <p class="subtitle">Entre na sua conta para continuar</p>
+
+        <form id="loginForm">
+            <input
+                type="text"
+                id="username"
+                placeholder="Nome de usuário"
+                required
+            >
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Senha"
+                required
+            >
+
+            <button type="submit">Entrar</button>
+
+            <p id="loginMessage"></p>
+        </form>
+    </div>
+
+    <div id="app" hidden>
+        <h1>Minha Lista de Tarefas</h1>
+
+        <button id="logoutButton" class="logout-button">
+            Sair
+        </button>
+
+        <form id="taskForm" class="task-form">
+            <input
+                type="text"
+                id="taskInput"
+                placeholder="Digite sua tarefa..."
+            >
+
+            <button type="submit">Adicionar</button>
+        </form>
+
         <ul id="taskList"></ul>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
