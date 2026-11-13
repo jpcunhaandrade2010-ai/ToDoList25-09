@@ -159,3 +159,9 @@ button:active {
         font-size: 24px;
     }
 }
+
+#taskList li {
+    animation: aparecer 0.4s ease;
+}
+
+
