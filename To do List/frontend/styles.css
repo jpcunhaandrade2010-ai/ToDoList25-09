@@ -164,4 +164,11 @@ button:active {
     animation: aparecer 0.4s ease;
 }
 
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+
 
