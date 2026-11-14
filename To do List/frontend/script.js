@@ -59,6 +59,14 @@ function renderTasks() {
         const texto = document.createElement("span");
         texto.textContent = tarefa;
 
+        const botaoEditar = document.createElement("button");
+        botaoEditar.textContent = "Editar";
+        botaoEditar.classList.add("edit-button");
+
+        botaoEditar.addEventListener("click", function() {
+            editarTarefa(index);
+        });
+
         const botaoExcluir = document.createElement("button");
         botaoExcluir.textContent = "Excluir";
         botaoExcluir.classList.add("delete-button");
@@ -68,10 +76,31 @@ function renderTasks() {
         });
 
         li.appendChild(texto);
+        li.appendChild(botaoEditar);
         li.appendChild(botaoExcluir);
 
         list.appendChild(li);
     });
+}
+
+function editarTarefa(index) {
+    const tarefaEditada = prompt("Edite a tarefa:", tasks[index]);
+
+    if (tarefaEditada === null) {
+        return;
+    }
+
+    const novaTarefa = tarefaEditada.trim();
+
+    if (novaTarefa === "") {
+        alert("A tarefa não pode ficar vazia.");
+        return;
+    }
+
+    tasks[index] = novaTarefa;
+    renderTasks();
+
+    alert("Tarefa editada com sucesso!");
 }
 
 function removerTarefa(index) {
