@@ -3,56 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Tarefas</title>
+    <title>Ativgenda</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <div id="loginScreen">
-        <h1>Bem-vindo</h1>
-        <p class="subtitle">Entre na sua conta para continuar</p>
+    <!-- Tela de login -->
+    <div id="telaLogin">
+        <h1>Bem-vindo à Ativgenda</h1>
+        <p class="subtitle">Entre na sua conta para usar sua agenda</p>
 
-        <form id="loginForm">
+        <form id="formularioLogin">
             <input
-                type="text"
-                id="username"
-                placeholder="Nome de usuário"
+                type="email"
+                id="campoEmailLogin"
+                placeholder="Seu e-mail"
                 required
             >
 
             <input
                 type="password"
-                id="password"
+                id="campoSenhaLogin"
                 placeholder="Senha"
                 required
             >
 
             <button type="submit">Entrar</button>
-
-            <p id="loginMessage"></p>
+            <p id="mensagemLogin"></p>
         </form>
+
+        <p>
+            Não tem uma conta?
+            <button type="button" id="botaoMostrarCadastro">Cadastre-se</button>
+        </p>
     </div>
 
-    <div id="app" hidden>
-        <h1>Minha Lista de Tarefas</h1>
+    <!-- Tela de cadastro -->
+    <div id="telaCadastro" hidden>
+        <h1>Criar conta</h1>
+        <p class="subtitle">Preencha seus dados para começar</p>
 
-        <button id="logoutButton" class="logout-button">
+        <form id="formularioCadastro">
+            <input
+                type="text"
+                id="campoNomeCadastro"
+                placeholder="Seu nome de usuário"
+                required
+            >
+
+            <input
+                type="email"
+                id="campoEmailCadastro"
+                placeholder="Seu e-mail"
+                required
+            >
+
+            <input
+                type="password"
+                id="campoSenhaCadastro"
+                placeholder="Senha (mínimo 6 caracteres)"
+                minlength="6"
+                required
+            >
+
+            <button type="submit">Criar conta</button>
+            <p id="mensagemCadastro"></p>
+        </form>
+
+        <p>
+            Já tem uma conta?
+            <button type="button" id="botaoMostrarLogin">Fazer login</button>
+        </p>
+    </div>
+
+    <!-- Tela principal -->
+    <div id="telaPrincipal" hidden>
+        <h1>Ativgenda - Sua agenda de tarefas</h1>
+
+        <p id="mensagemBoasVindas"></p>
+
+        <button id="botaoSair" class="logout-button" type="button">
             Sair
         </button>
 
-        <form id="taskForm" class="task-form">
+        <form id="formularioTarefas" class="task-form">
             <input
                 type="text"
-                id="taskInput"
+                id="campoTarefa"
                 placeholder="Digite sua tarefa..."
             >
+
+            <input
+                type="date"
+                id="campoPrazo"
+            >
+
+            <select id="campoPrioridade">
+                <option value="baixa">Baixa</option>
+                <option value="media" selected>Média</option>
+                <option value="alta">Alta</option>
+            </select>
+
+            <button type="button" id="botaoCancelarEdicao" hidden>
+                Cancelar edição
+            </button>
 
             <button type="submit">Adicionar</button>
         </form>
 
-        <ul id="taskList"></ul>
+        <ul id="listaTarefas"></ul>
     </div>
 
-    <script src="script.js"></script>
+    <script type="module" src="js/script.js"></script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+/* Configurações gerais */
 * {
     margin: 0;
     padding: 0;
@@ -6,174 +7,269 @@
 
 body {
     min-height: 100vh;
+    padding: 25px;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #111111, #292929, #404040);
+    background: #0b1729;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 25px;
-    color: #ffffff;
-}
-
-#loginScreen,
-#app {
-    width: 100%;
-    max-width: 500px;
-    background: #ffffff;
-    color: #222222;
-    padding: 45px;
-    border-radius: 18px;
-    box-shadow:
-        0 10px 20px rgba(0, 0, 0, 0.10),
-        0 20px 40px rgba(0, 0, 0, 0.20),
-        0 30px 60px rgba(0, 0, 0, 0.15);
-    border: 1px solid #e5e5e5;
 }
 
 [hidden] {
     display: none !important;
 }
 
+/* Telas principais */
+#telaLogin,
+#telaCadastro,
+#telaPrincipal {
+    width: 100%;
+    padding: 35px;
+    background: #e5ebf2;
+    border-radius: 15px;
+    color: #142238;
+}
+
+#telaLogin,
+#telaCadastro {
+    max-width: 420px;
+}
+
+#telaPrincipal {
+    max-width: 900px;
+}
+
+/* Títulos */
 h1 {
+    color: #0b1729;
+    margin-bottom: 15px;
+    font-size: 27px;
+}
+
+#telaLogin h1,
+#telaCadastro h1 {
     text-align: center;
-    margin-bottom: 20px;
-    color: #171717;
-    font-size: 28px;
-    font-weight: 700;
 }
 
 .subtitle {
+    color: #64748b;
     text-align: center;
-    color: #777777;
+    margin-bottom: 25px;
+}
+
+/* Campos de entrada */
+input,
+select {
+    width: 100%;
+    min-height: 42px;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #c5d2e0;
+    border-radius: 8px;
+    background: #edf1f6;
+    color: #142238;
     font-size: 14px;
-    margin-bottom: 30px;
 }
 
-input {
-    width: 100%;
-    height: 45px;
-    padding: 12px 15px;
-    border: 1px solid #cccccc;
-    border-radius: 9px;
-    outline: none;
-    font-size: 15px;
-    background: #f7f7f7;
-    color: #222222;
-    transition: 0.3s ease;
-    margin-bottom: 15px;
+input:focus,
+select:focus {
+    outline: 2px solid #397bb5;
 }
 
-input:focus {
-    border-color: #333333;
-    background: #ffffff;
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
-}
-
+/* Botões */
 button {
-    width: 100%;
-    min-height: 45px;
-    margin-top: 10px;
+    padding: 10px 15px;
     border: none;
-    border-radius: 9px;
-    background: #222222;
-    color: #ffffff;
-    font-size: 15px;
+    border-radius: 8px;
+    background: #397bb5;
+    color: white;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s ease;
 }
 
 button:hover {
-    background: #444444;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    filter: brightness(0.9);
 }
 
-button:active {
-    transform: scale(0.98);
+#formularioLogin button,
+#formularioCadastro button {
+    width: 100%;
+    background: #ff8738;
+    color: #142238;
 }
 
-#loginMessage {
-    color: #d32f2f;
-    font-size: 13px;
+#botaoMostrarCadastro,
+#botaoMostrarLogin {
+    background: none;
+    color: #397bb5;
+    text-decoration: underline;
+}
+
+#telaLogin > p:last-child,
+#telaCadastro > p:last-child {
+    margin-top: 20px;
     text-align: center;
-    margin-top: 15px;
+    color: #64748b;
+    font-size: 13px;
 }
 
-.task-form {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+/* Mensagens */
+#mensagemLogin,
+#mensagemCadastro {
+    margin-top: 12px;
+    text-align: center;
+    color: #c94c4c;
+    font-size: 13px;
 }
 
-#taskList {
-    list-style: none;
-    margin-top: 25px;
+/* Área principal */
+#telaPrincipal {
+    position: relative;
 }
 
-#taskList li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    padding: 12px;
-    margin-bottom: 10px;
-    background: #f5f5f5;
-    border: 1px solid #e5e5e5;
-    border-radius: 9px;
-    color: #222222;
-    overflow-wrap: anywhere;
+#telaPrincipal h1 {
+    border-left: 5px solid #ff8738;
+    padding-left: 12px;
 }
 
-.delete-button {
-    width: auto;
-    min-height: 35px;
-    padding: 0 12px;
-    margin: 0;
-    background: #444444;
-    font-size: 12px;
-    flex-shrink: 0;
-}
-
-.delete-button:hover {
-    background: #111111;
-}
-
-.logout-button {
-    background: #eeeeee;
-    color: #222222;
+/* Cumprimento do usuário */
+#mensagemBoasVindas {
+    color: #397bb5;
+    font-size: 16px;
+    font-weight: bold;
     margin-bottom: 20px;
 }
 
-.logout-button:hover {
-    background: #cccccc;
+/* Botão sair */
+.logout-button {
+    position: absolute;
+    top: 30px;
+    right: 35px;
+    background: #172b46;
 }
 
-@media (max-width: 550px) {
-    #loginScreen,
-    #app {
-        padding: 30px 22px;
-    }
-
-    h1 {
-        font-size: 24px;
-    }
+/* Formulário de tarefas */
+.task-form {
+    display: grid;
+    grid-template-columns: 1fr 140px 110px auto auto;
+    gap: 8px;
+    padding: 15px;
+    background: #dce6f0;
+    border-radius: 10px;
 }
 
-#taskList li {
-    animation: aparecer 0.4s ease;
+.task-form input,
+.task-form select {
+    min-width: 0;
+    margin: 0;
 }
 
-@keyframes aparecer {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-     to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.task-form button {
+    white-space: nowrap;
 }
 
+.task-form button[type="submit"] {
+    background: #ff8738;
+    color: #142238;
+}
 
+#botaoCancelarEdicao {
+    background: #172b46;
+}
+
+/* Lista de tarefas */
+#listaTarefas {
+    list-style: none;
+    margin-top: 20px;
+}
+
+#listaTarefas li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: #edf1f6;
+    border-left: 4px solid #397bb5;
+    border-radius: 8px;
+}
+
+#listaTarefas li input[type="checkbox"] {
+    width: 18px;
+    min-height: 18px;
+    margin: 0;
+    accent-color: #ff8738;
+}
+
+#listaTarefas li span {
+    flex: 1;
+    min-width: 100px;
+    overflow-wrap: anywhere;
+    font-size: 14px;
+}
+
+#listaTarefas li small {
+    font-size: 12px;
+}
+
+/* Botões das tarefas */
+#listaTarefas li button {
+    padding: 8px 12px;
+    font-size: 12px;
+}
+
+#listaTarefas li button:last-child {
+    background: #f2d1d1;
+    color: #a52f2f;
+}
+
+/* Prioridades */
+.prioridade {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.baixa {
+    background: #d9eee2;
+    color: #24613e;
+}
+
+.media {
+    background: #fff0d6;
+    color: #8b5b12;
+}
+
+.alta {
+    background: #f8dddd;
+    color: #a52f2f;
+}
+
+/* Adaptação para celulares */
+@media (max-width: 700px) {
+    body {
+        padding: 12px;
+        align-items: flex-start;
+    }
+
+    #telaLogin,
+    #telaCadastro,
+    #telaPrincipal {
+        padding: 22px 16px;
+    }
+
+    .task-form {
+        grid-template-columns: 1fr;
+    }
+
+    .task-form button {
+        width: 100%;
+    }
+
+    .logout-button {
+        top: 20px;
+        right: 16px;
+    }
+}
